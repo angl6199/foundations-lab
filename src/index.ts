@@ -1,10 +1,11 @@
-import type { OrganizationMembership } from "./domain/models.js";
-import { canManageOrganization } from "./domain/permissions.js";
+import { canUserManageOrganization, addUserToOrganization } from "./services/organizationService.js";
 
-const membership: OrganizationMembership = {
-  organizationId: "org_1",
-  userId: "user_1",
-  permission: "ORGANIZATION_ADMIN",
-};
+console.log(canUserManageOrganization("user_1", "org_1"));
 
-console.log(canManageOrganization(membership));
+console.log(canUserManageOrganization("user_2", "org_2"));
+
+/* console.log(canUserManageOrganization("user_3", "org_3")); */
+
+console.log(addUserToOrganization("user_1", "user_2", "org_1"))
+console.log(addUserToOrganization("user_2", "user_3", "org_2"))
+console.log(addUserToOrganization("user_1", "user_1", "org_1"))
